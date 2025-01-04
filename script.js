@@ -97,25 +97,33 @@ function addGame(){
         if(checkListCreated()){
             gameCount++
             if(count == 1){
-                if(palpite1.indexOf(teamA) == -1 && palpite1.indexOf(teamB) == -1){
+                if(checkGameExists(palpite1,teamA,teamB)){
+                    alert("Jogo já cadastrado!")
+                }else{
                     document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
                     palpite1.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
-                    console.log(palpite1)
-                }else{
-                    alert("Jogo já cadastrado!")
                 }
             }else if(count == 2){
-                document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                palpite2.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
-                console.log(palpite2)
+                if(checkGameExists(palpite2,teamA,teamB)){
+                    alert("Jogo já cadastrado!")
+                }else{
+                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
+                    palpite2.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
+                }
             }else if(count == 3){
-                document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                palpite3.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
-                console.log(palpite3)
+                if(checkGameExists(palpite3,teamA,teamB)){
+                    alert("Jogo já cadastrado!")
+                }else{
+                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
+                    palpite3.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
+                }
             }else if(count == 4){
-                document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                palpite4.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
-                console.log(palpite4)
+                if(checkGameExists(palpite4,teamA,teamB)){
+                    alert("Jogo já cadastrado!")
+                }else{
+                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
+                    palpite4.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
+                }
             }
         }else{
             window.alert("Lista de palpites não criada!")
@@ -123,6 +131,15 @@ function addGame(){
     }else{
         window.alert("Entrada Invalida!")
     }
+}
+
+function checkGameExists(palpite, teamA, teamB){
+    for(const game of palpite){
+        if(game[0] == teamA || game[2] == teamB || game[0] == teamB || game[2] == teamA){
+            return true
+        }
+    }
+    return false
 }
 
 function calcPts(){

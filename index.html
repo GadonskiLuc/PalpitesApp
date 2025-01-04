@@ -17,12 +17,13 @@
                 
                 <select id="member" onclick="checkIsNotNull()">
                     <option value="Resultado">Resultado</option>
-                    <option value="Laura">Laura</option>
-                    <option value="Lucas">Lucas</option>
-                    <option value="Luiz">Luiz</option>
+                    <option value="Laura🔴⚪">Laura🔴⚪</option>
+                    <option value="Lucas🔴⚫">Lucas🔴⚫</option>
+                    <option value="Luiz⚪🟢">Luiz⚪🟢</option>
                 </select>
     
                 <button type="button" id="addListBtn" onclick="addList()">Criar lista</button>
+                <button type="button" id="calcBtn" onclick="calcPts()">Calcular pontos</button>
             </div>
             <div class="gameInput">
                 <!-- ligas -->
@@ -63,7 +64,8 @@
             </div>
             
         </div>
-        <div class="result">
+        <div class="result"></div>
+        <div class="scoreboard"/>
     </div>
 </body>
 <script src="script.js"></script>

@@ -6,9 +6,11 @@ var scorebInput = document.getElementById("goalB")
 var addGameButton = document.getElementById("addBtn")
 var memberInput = document.getElementById("member")
 var addListButton = document.getElementById("addListBtn")
+var calcButton = document.getElementById("calcBtn")
 var contentDiv = document.querySelector(".content")
 var gameInputDiv = document.querySelector(".gameInput")
 var resultDiv = document.querySelector(".result")
+var scoreDiv = document.querySelector(".scoreboard")
 
 var count = 0
 var gameCount = 0
@@ -76,7 +78,6 @@ function addList(){
 }
 function checkListCreated(){
     if(count == 0){
-        window.alert("Lista de palpites não criada!")
         return false
     }else{
         return true
@@ -96,20 +97,24 @@ function addGame(){
         if(checkListCreated()){
             gameCount++
             if(count == 1){
-                document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                palpite1.push(teamA,scoreA,teamB,scoreB)
-                console.log(palpite1)
+                if(palpite1.indexOf(teamA) == -1 && palpite1.indexOf(teamB) == -1){
+                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
+                    palpite1.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
+                    console.log(palpite1)
+                }else{
+                    alert("Jogo já cadastrado!")
+                }
             }else if(count == 2){
                 document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                palpite2.push(teamA,scoreA,teamB,scoreB)
+                palpite2.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
                 console.log(palpite2)
             }else if(count == 3){
                 document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                palpite3.push(teamA,scoreA,teamB,scoreB)
+                palpite3.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
                 console.log(palpite3)
             }else if(count == 4){
                 document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                palpite4.push(teamA,scoreA,teamB,scoreB)
+                palpite4.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
                 console.log(palpite4)
             }
         }else{
@@ -118,6 +123,62 @@ function addGame(){
     }else{
         window.alert("Entrada Invalida!")
     }
+}
 
-    
+function calcPts(){
+    var pts2 = 0
+    var pts3 = 0
+    var pts4 = 0
+    if(memberList.length < 2){
+        window.alert("Fichas insuficientes!")
+    }else{
+        if(gameCount < 1){
+            window.alert("Jogos insuficientes!")
+        }else{
+            for(const game1 of palpite1){
+                //console.log(game)
+                for(const game2 of palpite2){
+                    if(game1[0] == game2[0] && game1[2] == game2[2]){
+                        if(game1[4] == game2[4]){
+                            pts2+=1
+                        }
+                        if(game1[1] == game2[1] && game1[3] == game2[3]){
+                            pts2+=2
+                        }
+                    }
+                }
+                if(memberList.length >= 3){
+                    for(const game2 of palpite3){
+                        if(game1[0] == game2[0] && game1[2] == game2[2]){
+                            if(game1[4] == game2[4]){
+                                pts3+=1
+                            }
+                            if(game1[1] == game2[1] && game1[3] == game2[3]){
+                                pts3+=2
+                            }
+                        }
+                    }
+                    if(memberList.length == 4){
+                        for(const game2 of palpite4){
+                            if(game1[0] == game2[0] && game1[2] == game2[2]){
+                                if(game1[4] == game2[4]){
+                                    pts4+=1
+                                }
+                                if(game1[1] == game2[1] && game1[3] == game2[3]){
+                                    pts4+=2
+                                }
+                            }
+                        }
+                    }
+                }  
+            }
+        }
+    }
+    scoreDiv.innerHTML = `
+        <h2>Pontuação</h2>
+        <p>${memberList[1]}: ${pts2} pontos</p>
+        <p>${memberList[2]}: ${pts3} pontos</p>
+        <p>${memberList[3]}: ${pts4} pontos</p>
+    `
+    console.log(pts2,pts3,pts4)
 }

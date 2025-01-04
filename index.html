@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PalpitesApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Palpites</h1>
+        </div>
+        <div class="content">
+            <div class="gameInput">
+                <!-- ligas -->
+                <label for="league">Liga</label>
+                
+                <input list="league">
+                <datalist id="league">
+                    <option value="Brasileirão Série A">
+                        <option value="Brasileirão Série B">
+                            <option value="Brasileirão Série C">
+                            </datalist>
+                            <!-- times -->
+                            <div class="team">
+                                <label for="teamA">Time A</label>
+                                
+                                <input list="team" onclick="checkIsNotNull()" id="teamA">
+                                <datalist id="team">
+                                    <option value="Flamengo">
+                                        <option value="Palmeiras">
+                                            <option value="Internacional">
+                                            </datalist>
+                                        </div>
+                                        
+                                        <input type="number" onkeyup="checkIsNotNull()" class="goal" id="goalA">
+                                        x
+                                        <input type="number" onkeyup="checkIsNotNull()" class="goal" id="goalB">
+                                        
+                                        
+                                        <div class="team">
+                                            <label for="teamB" >Time B</label>
+                                            
+                                            <input list="team" onclick="checkIsNotNull()" id="teamB">
+                                            <datalist id="team">
+                                                <option value="Flamengo">
+                        <option value="Palmeiras">
+                        <option value="Internacional">
+                    </datalist>
+                </div>
+                
+                <button type="button" id="addBtn" onclick="addGame()">Adicionar</button>
+            </div>
+        </div>
+        <div class="result">
+        </div>
+    </body>
+    <script src="script.js"></script>
+    </html>

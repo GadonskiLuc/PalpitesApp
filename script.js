@@ -12,6 +12,7 @@ var resultDiv = document.querySelector(".result")
 
 var count = 0
 var gameCount = 0
+var memberList = []
 var palpite1 = []
 var palpite2 = []
 var palpite3 = []
@@ -55,15 +56,21 @@ function scoreCheck(){
 
 function addList(){
     var member = memberInput.value
-    if(member != '' && count < 4){
-        count++
-        resultDiv.innerHTML += `
-        <div id="palpite${count}">
-            <p>${member}</p>
-        </div>
-        `
+    if(memberList.indexOf(member) == -1 && member != ''){
+        if(member != '' && count < 4){
+            memberList.push(member)
+            count++
+            gameCount = 0
+            resultDiv.innerHTML += `
+            <div id="palpite${count}">
+                <p>${member}</p>
+            </div>
+            `
+        }else{
+            window.alert("Entrada Invalida!")
+        }
     }else{
-        window.alert("Entrada Invalida!")
+        window.alert(`Ficha de ${member} já foi criada!`)
     }
 
 }
@@ -88,17 +95,20 @@ function addGame(){
         //console.log(`Jogo 1: ${teamA} ${scoreA} x ${scoreB} ${teamB}`)
         if(checkListCreated()){
             gameCount++
-            resultDiv.innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
             if(count == 1){
+                document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
                 palpite1.push(teamA,scoreA,teamB,scoreB)
                 console.log(palpite1)
             }else if(count == 2){
+                document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
                 palpite2.push(teamA,scoreA,teamB,scoreB)
                 console.log(palpite2)
             }else if(count == 3){
+                document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
                 palpite3.push(teamA,scoreA,teamB,scoreB)
                 console.log(palpite3)
             }else if(count == 4){
+                document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
                 palpite4.push(teamA,scoreA,teamB,scoreB)
                 console.log(palpite4)
             }

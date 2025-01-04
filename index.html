@@ -26,23 +26,11 @@
                 <button type="button" id="calcBtn" onclick="calcPts()">Calcular pontos</button>
             </div>
             <div class="gameInput">
-                <!-- ligas -->
-                <label for="league">Liga</label>
-                
-                <select id="league">
-                    <option value="Brasileirão Série A">Brasileirão Série A</option>
-                    <option value="Brasileirão Série B">Brasileirão Série B</option>
-                    <option value="Brasileirão Série C">Brasileirão Série C</option>
-                </select>
                 <!-- times -->
                 <div class="team">
                     <label for="teamA">Time A</label>
                         
-                    <select id="teamA" onclick="checkIsNotNull()">
-                        <option value="Flamengo">Flamengo</option>
-                        <option value="Palmeiras">Palmeiras</option>
-                        <option value="Internacional">Internacional</option>
-                    </select>
+                    <input type="text" id="teamA" onkeyup="checkIsNotNull()">
                 </div>
                 
                 <input type="number" min="0" onkeyup="checkIsNotNull()" class="goal" id="goalA">
@@ -53,11 +41,7 @@
                 <div class="team">
                     <label for="teamB" >Time B</label>
                     
-                    <select id="teamB" onclick="checkIsNotNull()">
-                        <option value="Flamengo">Flamengo</option>
-                        <option value="Palmeiras">Palmeiras</option>
-                        <option value="Internacional">Internacional</option>
-                    </select>
+                    <input type="text" id="teamB" onkeyup="checkIsNotNull()">
                 </div>
                 
                 <button type="button" id="addBtn" onclick="addGame()">Adicionar</button>

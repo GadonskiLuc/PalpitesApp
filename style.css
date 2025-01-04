@@ -23,6 +23,10 @@ body{
     flex-direction: column;
     gap: 20px;
 }
+.container{
+    background-color: #14ed84;
+    color: #fff;
+}
 
 @media screen and (min-width: 50rem) {
     .container{
@@ -59,7 +63,8 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        height:100vh;
+        min-height: 95dvh;
+        height:100%;
         width:100vw;
         background-color: #14ed84;
         border-radius: 10px;

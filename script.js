@@ -90,16 +90,16 @@ function addGame(){
     var teamB = teambInput.value
     var scoreA = Number(scoreaInput.value)
     var scoreB = Number(scorebInput.value)
-
+    
     if(checkIsNotNull()){
         //window.alert(`Jogo ${count}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})`)
         //console.log(`Jogo 1: ${teamA} ${scoreA} x ${scoreB} ${teamB}`)
         if(checkListCreated()){
-            gameCount++
             if(count == 1){
                 if(checkGameExists(palpite1,teamA,teamB)){
                     alert("Jogo já cadastrado!")
                 }else{
+                    gameCount++
                     document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
                     palpite1.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
                 }
@@ -107,6 +107,7 @@ function addGame(){
                 if(checkGameExists(palpite2,teamA,teamB)){
                     alert("Jogo já cadastrado!")
                 }else{
+                    gameCount++
                     document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
                     palpite2.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
                 }
@@ -114,6 +115,7 @@ function addGame(){
                 if(checkGameExists(palpite3,teamA,teamB)){
                     alert("Jogo já cadastrado!")
                 }else{
+                    gameCount++
                     document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
                     palpite3.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
                 }
@@ -121,6 +123,7 @@ function addGame(){
                 if(checkGameExists(palpite4,teamA,teamB)){
                     alert("Jogo já cadastrado!")
                 }else{
+                    gameCount++
                     document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
                     palpite4.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
                 }

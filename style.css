@@ -16,7 +16,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height:95dvh;
+    min-height: 95dvh;
+    height:100%;
     width:100dvw;
     margin: 10px;
     background-color: #14ed84;
@@ -34,6 +35,8 @@ body{
 
 .content{
     display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .gameInput{
@@ -75,8 +78,15 @@ button{
 button:hover{
     background-color: #208cff;
 }
-button:disabled{
-    background-color: #ff5e5e;
-    cursor: not-allowed;
+
+.result{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
 }
+
+
     

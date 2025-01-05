@@ -1,5 +1,11 @@
 # Projeto PalpitesApp
 
+## Update 05/01/2025 (1.1)
+
+* Agora é possível copiar os jogos da primeira ficha automaticamente
+* Agora é possível atualizar o placar dos jogos das fichas dos membros
+* Corrigido o bug de membros com nome Undefined ao calcular os pontos
+
 ## 1. Ideia
 
 Aplicação web simples, com o objetivo de gerar fichas de palpites de esportes, como futebol, basquete, volei, ou o que vier na sua mente, seja criativo ;)

@@ -7,6 +7,7 @@ var addGameButton = document.getElementById("addBtn")
 var memberInput = document.getElementById("member")
 var addListButton = document.getElementById("addListBtn")
 var calcButton = document.getElementById("calcBtn")
+var copyBtn = document.getElementById("copyBtn")
 var contentDiv = document.querySelector(".content")
 var gameInputDiv = document.querySelector(".gameInput")
 var resultDiv = document.querySelector(".result")
@@ -37,12 +38,8 @@ function checkIsNotNull(){
     }
 }
 
-function scoreCheck(){
+function scoreCheck(teamA,teamB,scoreA,scoreB){
     //valores
-    var teamA = teamaInput.value
-    var teamB = teambInput.value
-    var scoreA = Number(scoreaInput.value)
-    var scoreB = Number(scorebInput.value)
     var msg = ""
 
     if(scoreA > scoreB){
@@ -90,6 +87,7 @@ function addGame(){
     var teamB = teambInput.value
     var scoreA = Number(scoreaInput.value)
     var scoreB = Number(scorebInput.value)
+    var result = scoreCheck(teamA,teamB,scoreA,scoreB)
     
     if(checkIsNotNull()){
         //window.alert(`Jogo ${count}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})`)
@@ -100,16 +98,16 @@ function addGame(){
                     alert("Jogo já cadastrado!")
                 }else{
                     gameCount++
-                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                    palpite1.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
+                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${result})</p>`
+                    palpite1.push([teamA,scoreA,teamB,scoreB,result])
                 }
             }else if(count == 2){
                 if(checkGameExists(palpite2,teamA,teamB)){
                     alert("Jogo já cadastrado!")
                 }else{
                     gameCount++
-                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                    palpite2.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
+                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${result})</p>`
+                    palpite2.push([teamA,scoreA,teamB,scoreB,result])
                 }
             }else if(count == 3){
                 if(checkGameExists(palpite3,teamA,teamB)){
@@ -117,15 +115,15 @@ function addGame(){
                 }else{
                     gameCount++
                     document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                    palpite3.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
+                    palpite3.push([teamA,scoreA,teamB,scoreB,result])
                 }
             }else if(count == 4){
                 if(checkGameExists(palpite4,teamA,teamB)){
                     alert("Jogo já cadastrado!")
                 }else{
                     gameCount++
-                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${scoreCheck()})</p>`
-                    palpite4.push([teamA,scoreA,teamB,scoreB,scoreCheck()])
+                    document.getElementById(`palpite${count}`).innerHTML += `<p>Jogo ${gameCount}: ${teamA} ${scoreA} x ${scoreB} ${teamB} (${result})</p>`
+                    palpite4.push([teamA,scoreA,teamB,scoreB,result])
                 }
             }
         }else{
@@ -194,11 +192,135 @@ function calcPts(){
             }
         }
     }
-    scoreDiv.innerHTML = `
+    if(count == 2){
+        scoreDiv.innerHTML = `
+        <h2>Pontuação</h2>
+        <p>${memberList[1]}: ${pts2} pontos</p>
+    `
+    }else if(count == 3){
+        scoreDiv.innerHTML = `
+        <h2>Pontuação</h2>
+        <p>${memberList[1]}: ${pts2} pontos</p>
+        <p>${memberList[2]}: ${pts3} pontos</p>
+    `
+    }else if(count == 4){
+        scoreDiv.innerHTML = `
         <h2>Pontuação</h2>
         <p>${memberList[1]}: ${pts2} pontos</p>
         <p>${memberList[2]}: ${pts3} pontos</p>
         <p>${memberList[3]}: ${pts4} pontos</p>
     `
+    }
     console.log(pts2,pts3,pts4)
+}
+
+function copyList(){
+    var teamA
+    var teamB
+    var scoreA
+    var scoreB
+    var result
+    
+
+    if(count <= 1){
+        alert("Impossivel copiar")
+    }else{
+        for(const game of palpite1){
+            teamA = game[0]
+            teamB = game[2]
+            scoreA = game[1]
+            scoreB = game[3]
+            result = game[4]
+
+            if(count == 2){
+                if(checkGameExists(palpite2,teamA,teamB)){
+                    alert("Jogo já cadastrado!")
+                }else{
+                    gameCount++
+                    document.getElementById(`palpite${count}`).innerHTML += `
+                    <p>Jogo ${gameCount}: 
+                        ${teamA} <input type="number" value="${scoreA}" min="0" onkeyup="checkIsNotNull()" class="goal" id="goalA${gameCount}_2">
+                        x
+                        <input type="number" value="${scoreB}" min="0" onkeyup="checkIsNotNull()" class="goal" id="goalB${gameCount}_2">${teamB}
+                        (${result})
+                        <button type="button" id="updBtn" onclick="updateGame('${gameCount}',2,'${teamA}','${teamB}')">Atualizar</button>
+                        </p>
+                    `
+                    palpite2.push([teamA,scoreA,teamB,scoreB,result])
+                }
+            }else if(count == 3){
+                if(checkGameExists(palpite3,teamA,teamB)){
+                    alert("Jogo já cadastrado!")
+                }else{
+                    gameCount++
+                    document.getElementById(`palpite${count}`).innerHTML += `
+                    <p>Jogo ${gameCount}: 
+                        ${teamA} <input type="number" value="${scoreA}" min="0" onkeyup="checkIsNotNull()" class="goal" id="goalA${gameCount}_3">
+                        x
+                        <input type="number" value="${scoreB}" min="0" onkeyup="checkIsNotNull()" class="goal" id="goalB${gameCount}_3">${teamB}
+                        (${result})
+                        <button type="button" id="updBtn" onclick="updateGame('${gameCount}',3,'${teamA}','${teamB}')">Atualizar</button>
+                        </p>
+                    `
+                    palpite3.push([teamA,scoreA,teamB,scoreB,result])
+                }
+            }else if(count == 4){
+                if(checkGameExists(palpite4,teamA,teamB)){
+                    alert("Jogo já cadastrado!")
+                }else{
+                    gameCount++
+                    document.getElementById(`palpite${count}`).innerHTML += `
+                    <p>Jogo ${gameCount}: 
+                        ${teamA} <input type="number" value="${scoreA}" min="0" onkeyup="checkIsNotNull()" class="goal" id="goalA${gameCount}_4">
+                        x
+                        <input type="number" value="${scoreB}" min="0" onkeyup="checkIsNotNull()" class="goal" id="goalB${gameCount}_4">${teamB}
+                        (${result})
+                        <button type="button" id="updBtn" onclick="updateGame('${gameCount}',4,'${teamA}','${teamB}')">Atualizar</button>
+                        </p>
+                    `
+                    palpite4.push([teamA,scoreA,teamB,scoreB,result])
+                }
+            }
+        }
+    }
+}
+function updateGame(gCount,mCount,teamA,teamB){
+    var scoreA
+    var scoreB
+
+    if(mCount == 2){
+        scoreA = Number(document.getElementById(`goalA${gCount}_2`).value)
+        scoreB = Number(document.getElementById(`goalB${gCount}_2`).value)
+        for(const game of palpite2){
+            if(game[0] == teamA && game[2] == teamB){
+                game[1] = scoreA
+                game[3] = scoreB
+                game[4] = scoreCheck(teamA,teamB,scoreA,scoreB)
+            }
+        }
+        //console.log(palpite2)
+    }else if(mCount == 3){
+        scoreA = Number(document.getElementById(`goalA${gCount}_3`).value)
+        scoreB = Number(document.getElementById(`goalB${gCount}_3`).value)
+        for(const game of palpite3){
+            if(game[0] == teamA && game[2] == teamB){
+                game[1] = scoreA
+                game[3] = scoreB
+                game[4] = scoreCheck(teamA,teamB,scoreA,scoreB)
+            }
+        }
+        //console.log(palpite3)
+    }else if(mCount == 4){
+        scoreA = Number(document.getElementById(`goalA${gCount}_4`).value)
+        scoreB = Number(document.getElementById(`goalB${gCount}_4`).value)
+        for(const game of palpite4){
+            if(game[0] == teamA && game[2] == teamB){
+                game[1] = scoreA
+                game[3] = scoreB
+                game[4] = scoreCheck(teamA,teamB,scoreA,scoreB)
+            }
+        }
+        //console.log(palpite4)
+    }
+    alert("Jogo atualizado!")
 }

@@ -28,7 +28,7 @@ body{
     color: #fff;
 }
 
-@media screen and (min-width: 50rem) {
+@media screen and (min-width: 30rem) {
     .container{
         display: flex;
         flex-direction: column;
@@ -46,17 +46,24 @@ body{
 
     .gameInput {
         display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items:end;
+        flex-direction: row;
+        justify-content: center;
+        align-items:end;
+        gap: 5px;
     }
         
     .result{
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin-top: 10px;
-}
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        margin-top: 10px;
+    }
+    label, input{
+        display:block;
+        height: 20px;
+        font-weight: bold;
+    }
+    
 }
 @media screen and (max-width: 30rem) {
     .container{
@@ -78,6 +85,12 @@ body{
     justify-content: center;
     align-items:start;
     }
+
+    label, input{
+        height: 20px;
+        font-weight: bold;
+    }
+    
 }
 
 /* .gameInput{
@@ -88,10 +101,6 @@ body{
 } */
 
 
-label, input{
-    height: 20px;
-    font-weight: bold;
-}
 
 
 .goal{

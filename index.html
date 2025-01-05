@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PalpitesApp</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="title">
-            <h1>Palpites</h1>
-        </div>
-        <div class="content">
-            <div class="member">
-                <label for="member">Membro</label>
-                
-                <select id="member" onclick="checkIsNotNull()">
-                    <option value="Resultado">Resultado</option>
-                    <option value="Laura🔴⚪">Laura🔴⚪</option>
-                    <option value="Lucas🔴⚫">Lucas🔴⚫</option>
-                    <option value="Luiz⚪🟢">Luiz⚪🟢</option>
-                </select>
-    
-                <button type="button" id="addListBtn" onclick="addList()">Criar lista</button>
-                <button type="button" id="calcBtn" onclick="calcPts()">Calcular pontos</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PalpitesApp</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">
+                <h1>Palpites</h1>
+            </div>
+            <div class="content">
+                <div class="member">
+                    <label for="member">Membro</label>
+                    
+                    <select id="member" onclick="checkIsNotNull()">
+                        <option value="Resultado">Resultado</option>
+                        <option value="Laura🔴⚪">Laura🔴⚪</option>
+                        <option value="Lucas🔴⚫">Lucas🔴⚫</option>
+                        <option value="Luiz⚪🟢">Luiz⚪🟢</option>
+                    </select>
+                    
+                    <button type="button" id="addListBtn" onclick="addList()">Criar lista</button>
+                    <button type="button" id="calcBtn" onclick="calcPts()">Calcular pontos</button>
+                    <div class="scoreboard"/>
             </div>
             <div class="gameInput">
                 <!-- times -->
@@ -50,7 +51,7 @@
             
         </div>
         <div class="result"></div>
-        <div class="scoreboard"/>
+        <div class="update"/>
     </div>
 </body>
 <script src="script.js"></script>

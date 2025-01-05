@@ -12,6 +12,7 @@ var contentDiv = document.querySelector(".content")
 var gameInputDiv = document.querySelector(".gameInput")
 var resultDiv = document.querySelector(".result")
 var scoreDiv = document.querySelector(".scoreboard")
+var updateDiv = document.querySelector(".update")
 
 var count = 0
 var gameCount = 0
@@ -282,6 +283,9 @@ function copyList(){
                 }
             }
         }
+        updateDiv.innerHTML = `
+            <button type="button" id="updAllBtn" onclick="updateAll()">Atualizar todos</button>
+        `
     }
 }
 function updateGame(gCount,mCount,teamA,teamB){
@@ -322,5 +326,17 @@ function updateGame(gCount,mCount,teamA,teamB){
         }
         //console.log(palpite4)
     }
-    alert("Jogo atualizado!")
+}
+
+function updateAll(){
+    var x
+    var y
+    for(x=2;x<=count;x++){
+        console.log('x:'+x)
+        for(y=1;y<=palpite1.length;y++){
+            console.log('y:'+y)
+            updateGame(y,x,palpite1[y-1][0],palpite1[y-1][2])
+        }
+    }
+    alert("Atualizado com sucesso!")
 }

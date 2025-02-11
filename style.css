@@ -9,6 +9,7 @@ body{
     align-items: center;
     background-color: #fff;
     font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 55px;
 }
 
 
@@ -43,7 +44,7 @@ body{
         color: #fff;
         font-weight: bold;
     }
-
+    
     .gameInput {
         display: flex;
         flex-direction: row;
@@ -51,7 +52,7 @@ body{
         align-items:end;
         gap: 5px;
     }
-        
+    
     .result{
         display: flex;
         flex-direction: row;
